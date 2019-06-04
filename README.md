@@ -1,11 +1,3 @@
-Just testing out the best way to get subfiles and readme. One (sub-par) option is to have a global bibliography file, which does have the advantage of custom structures and the ability to check for duplicate keys, but the disadvantage of being global and breaking modularity. This can be referenced from any subfile, but at the cost of forcing each subfile to define the rootdir location so that it can be compiled individually. It's not too difficult to get the `\printbibliography` function working by wrapping with either some variant of 
+Just testing out the best way to get subfiles and readme. One (sub-par) option is to have a global bibliography file, which does have the advantage of custom structures and the ability to check for duplicate keys, but the disadvantage of being global and breaking modularity. This can be referenced from any subfile, but at the cost of forcing each subfile to define the rootdir location so that it can be compiled individually. It's not too difficult to get the `\printbibliography` function working by wrapping with the subfile functions defined in the preamble of the main tex file.
 
-```
-\newcommand{\onlyinsubfile}[1]{#1}
-\newcommand{\notinsubfile}[1]{}
-
-\begin{document}
-\renewcommand{\onlyinsubfile}[1]{}
-\renewcommand{\notinsubfile}[1]{#1}
-```
-or so I think.
+There are actually some sexier ways of making this work by monkey-patching the document ending/beginning code that the subfiles use, which can do things like automatically redefining or undefining print bibliography to make it so that you don't have to type in the `\onlyinsubfile` wrapper anymore (and you can extend that to make it so that a subfile automatically gets a `\printbibliography` so you don't have to type it in at all, and in fact lets you automatically end with lists of figures and tables and all of that appendixy jazz. I tend to prefer it when things are explicit, and I really hate hacking in \TeX though :-(.
