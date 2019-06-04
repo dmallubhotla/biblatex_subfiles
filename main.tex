@@ -1,0 +1,14 @@
+\providecommand{\rootdir}{.}
+\documentclass[11pt]{article}
+\usepackage{subfiles}
+
+\usepackage[
+	style=phys, articletitle=false, biblabel=brackets, chaptertitle=false, pageranges=false, url=true
+]{biblatex}
+\addbibresource{\rootdir/bib/bibliography.bib}
+
+\begin{document}
+Looking for bibliography at \rootdir/bib/bibliography.bib.
+\title{This is a title}
+\subfile{chapters/chapter1/chapter1}
+\end{document}
