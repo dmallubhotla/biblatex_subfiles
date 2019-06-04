@@ -1,5 +1,6 @@
 \providecommand{\rootdir}{.}
 \documentclass[11pt]{article}
+
 \usepackage{subfiles}
 
 \usepackage[
@@ -7,8 +8,22 @@
 ]{biblatex}
 \addbibresource{\rootdir/bib/bibliography.bib}
 
+% This runs for every command, but is wrong for the main
+\newcommand{\onlyinsubfile}[1]{#1}
+\newcommand{\notinsubfile}[1]{}
+
 \begin{document}
-Looking for bibliography at \rootdir/bib/bibliography.bib.
+
+% This only runs when main.tex is being compiled, and swaps it to only print in the main
+\renewcommand{\onlyinsubfile}[1]{}
+\renewcommand{\notinsubfile}[1]{#1}
+
 \title{This is a title}
+
 \subfile{chapters/chapter1/chapter1}
+\subfile{chapters/chapter2/chapter2}
+
+% prints the bibliography of the whole gang.
+\notinsubfile{\printbibliography}
+
 \end{document}

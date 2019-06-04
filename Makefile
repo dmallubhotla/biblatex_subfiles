@@ -1,4 +1,4 @@
-CHAPTER_NAMES = chapter1
+CHAPTER_NAMES = chapter1 chapter2
 CHAPTER_DIRS = $(addprefix chapters/, $(addsuffix /, $(CHAPTER_NAMES)))
 CHAPTER_PDFS =   $(join $(CHAPTER_DIRS), $(addsuffix .pdf, $(CHAPTER_NAMES)))
 CHAPTER_TEXS = $(CHAPTER_PDFS:.pdf=.tex)
